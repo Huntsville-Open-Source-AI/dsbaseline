@@ -1,0 +1,69 @@
+name: Next step for your template...
+description: Setup Repository Details
+labels: [setup-repository]
+
+title: "Setup Repository"
+
+body:
+- type: input
+  id: project_name
+  attributes:
+    label: Project Name
+  validations:
+    required: true
+    
+- type: input
+  id: repo_name
+  attributes:
+    label: Repo Name
+  validations:
+    required: true
+    
+- type: input
+  id: author_name
+  attributes:
+    label: Author
+  validations:
+    required: true
+
+- type: input
+  id: description
+  attributes:
+    label: Description
+  validations:
+    required: true
+
+- type: dropdown
+  id: open_source_license
+  attributes:
+    label: Choose your preferred license
+    options:
+      - MIT
+      - BSD-3-Clause
+      - No license file
+  validations:
+    required: true
+
+- type: input
+  id: s3_bucket
+  attributes:
+    label: S3 Bucket URI
+  validations:
+    required: true
+
+- type: input
+  id: aws_profile
+  attributes:
+    label: AWS Profile
+  validations:
+    required: true
+
+- type: dropdown
+  id: python_interpreter
+  attributes:
+    label: Preferred Python Interpreter
+    options:
+      - python3
+      - python
+  validations:
+    required: true
