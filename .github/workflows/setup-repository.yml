@@ -43,14 +43,13 @@ jobs:
 
       - name: Install dependencies
         run: pip install cookiecutter
-
-      - name: Capturing issue as cookiecutter.json
       
       - uses: stefanbuck/github-issue-praser@v2
         id: issue-parser
         with:
           template-path: .github/ISSUE_TEMPLATE/cookiecutter-issue.yml
 
+      - name: Capturing issue as cookiecutter.json
       - run: echo '${{ steps.issue-parser.outputs.jsonString }}' > cookiecutter.json
       
       - name: Scaffolding repository
