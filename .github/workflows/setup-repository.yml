@@ -50,7 +50,7 @@ jobs:
           template-path: .github/ISSUE_TEMPLATE/cookiecutter-issue.yml
 
       - name: Capturing issue as cookiecutter.json
-      - run: echo '${{ steps.issue-parser.outputs.jsonString }}' > cookiecutter.json
+        run: echo '${{ steps.issue-parser.outputs.jsonString }}' > cookiecutter.json
       
       - name: Scaffolding repository
         # cookiecutter is command-line utility to create projects from templates
