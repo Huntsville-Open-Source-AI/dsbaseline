@@ -11,16 +11,6 @@ def no_curlies(filepath):
     with open(filepath, 'r') as f:
         data = f.read()
 
-    template_strings = [
-        '{{',
-        '}}',
-        '{%',
-        '%}'
-    ]
-
-    template_strings_in_file = [s in data for s in template_strings]
-    return not any(template_strings_in_file)
-
 
 @pytest.mark.usefixtures("default_baked_project")
 class TestCookieSetup(object):
