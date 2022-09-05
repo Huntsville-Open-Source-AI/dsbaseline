@@ -1,8 +1,10 @@
 name: Setup repository
 on:
-  push:
-    paths:
-      - cookiecutter.json
+  issues:
+    types: opened
+
+concurrency: 'main'
+
 jobs:
   setup:
     name: Reinitialize repository
@@ -42,6 +44,15 @@ jobs:
       - name: Install dependencies
         run: pip install cookiecutter
 
+      - name: Capturing issue as cookiecutter.json
+      
+      - uses: stefanbuck/github-issue-praser@v2
+        id: issue-parser
+        with:
+          template-path: .github/ISSUE_TEMPLATE/cookiecutter-issue.yml
+
+      - run: echo '${{ steps.issue-parser.outputs.jsonString }}' > cookiecutter.json
+      
       - name: Scaffolding repository
         # cookiecutter is command-line utility to create projects from templates
         # https://github.com/cookiecutter/cookiecutter
