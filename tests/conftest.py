@@ -7,9 +7,9 @@ from cookiecutter import main
 CCDS_ROOT = Path(__file__).parents[1].resolve()
 
 args = {
-        'project_name': 'dstestproject',
-        'author_name': 'dstestproject',
-        'open_source_license': 'MIT'
+	'author_name': 'dsbaseline',
+        'project_name': 'dsbaseline',
+        'open_source_license': 'BSD-3'
        }
 
 
@@ -22,7 +22,7 @@ def system_check(basename):
 
 @pytest.fixture(scope='class', params=[{}, args])
 def default_baked_project(tmpdir_factory, request):
-    temp = tmpdir_factory.mktemp('dstestproject')
+    temp = tmpdir_factory.mktemp('dsbaseline')
     out_dir = Path(temp).resolve()
 
     pytest.param = request.param

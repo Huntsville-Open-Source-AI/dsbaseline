@@ -12,28 +12,32 @@ def no_curlies(filepath):
         data = f.read()
 
     template_strings = [
-        "\{\{",
-        "\}\}",
-        "\{\%",
-        "\%\}"
+        "{{",
+        "}}",
+        "{%",
+        "%}"
     ]
+
+    template_strings_in_file = [s in data for s in template_strings]
+    return not any(template_strings_in_file)
 
 @pytest.mark.usefixtures("default_baked_project")
 class TestCookieSetup(object):
     def test_project_name(self):
         project = self.path
         if pytest.param.get('project_name'):
-            name = system_check('DrivenData')
+            name = system_check('dsbaseline')
             assert project.name == name
         else:
             assert project.name == 'project_name'
 
     def test_author(self):
         setup_ = self.path / 'setup.py'
-        args = ['python', str(setup_), '--author']
+        args = ['python3', str(setup_), '--author']
         p = check_output(args).decode('ascii').strip()
+        print(p)
         if pytest.param.get('author_name'):
-            assert p == 'DrivenData'
+            assert p == 'dsbaseline'
         else:
             assert p == 'Your name (or your organization/company/team)'
 
@@ -43,11 +47,11 @@ class TestCookieSetup(object):
         assert no_curlies(readme_path)
         if pytest.param.get('project_name'):
             with open(readme_path) as fin:
-                assert 'DrivenData' == next(fin).strip()
+                assert 'dsbaseline' == next(fin).strip()
 
     def test_setup(self):
         setup_ = self.path / 'setup.py'
-        args = ['python', str(setup_), '--version']
+        args = ['python3', str(setup_), '--version']
         p = check_output(args).decode('ascii').strip()
         assert p == '0.1.0'
 
@@ -58,7 +62,7 @@ class TestCookieSetup(object):
 
     def test_license_type(self):
         setup_ = self.path / 'setup.py'
-        args = ['python', str(setup_), '--license']
+        args = ['python3', str(setup_), '--license']
         p = check_output(args).decode('ascii').strip()
         if pytest.param.get('open_source_license'):
             assert p == 'BSD-3'
@@ -66,7 +70,7 @@ class TestCookieSetup(object):
             assert p == 'MIT'
 
     def test_requirements(self):
-        reqs_path = self.path / 'requirements.txt'
+        reqs_path = self.path / 'pyproject.toml'
         assert reqs_path.exists()
         assert no_curlies(reqs_path)
 

@@ -121,7 +121,7 @@ def xdoctest(session: Session) -> None:
     args = session.posargs or ["all"]
     session.run("poetry", "install", "--no-dev", external=True)
     install_with_constraints(session, "xdoctest")
-    session.run("python", "-m", "xdoctest", package, *args)
+    session.run("python3", "-m", "xdoctest", package, *args)
 
 
 @nox.session(python=["3.8"])
