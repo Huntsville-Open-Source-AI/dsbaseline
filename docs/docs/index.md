@@ -1,4 +1,4 @@
-# Cookiecutter Data Science
+# Data Science Baseline Project Template
 
 _A logical, reasonably standardized, but flexible project structure for doing and sharing data science work._
 

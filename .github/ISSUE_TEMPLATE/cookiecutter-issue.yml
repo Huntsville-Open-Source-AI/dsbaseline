@@ -57,13 +57,3 @@ body:
     label: AWS Profile
   validations:
     required: true
-
-- type: dropdown
-  id: python_interpreter
-  attributes:
-    label: Preferred Python Interpreter
-    options:
-      - python3
-      - python
-  validations:
-    required: true

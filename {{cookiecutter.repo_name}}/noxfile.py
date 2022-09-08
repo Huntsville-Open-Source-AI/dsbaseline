@@ -5,7 +5,7 @@ from typing import Any
 import nox
 from nox.sessions import Session
 
-package = "builder"
+package = "dsbaseline"
 nox.options.sessions = "black", "lint", "safety", "bandit", "mypy", "pytype", "tests"
 locations = "src", "tests", "noxfile.py", "docs/conf.py"
 

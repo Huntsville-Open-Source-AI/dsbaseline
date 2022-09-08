@@ -1,4 +1,7 @@
+/.env
 /.coverage
+/.venv/
+/.pytest_cache/
 /.mypy_cache/
 /.nox/
 /.python-version

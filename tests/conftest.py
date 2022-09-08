@@ -7,11 +7,10 @@ from cookiecutter import main
 CCDS_ROOT = Path(__file__).parents[1].resolve()
 
 args = {
-        'project_name': 'DrivenData',
-        'author_name': 'DrivenData',
-        'open_source_license': 'BSD-3-Clause',
-        'python_interpreter': 'python'
-        }
+        'project_name': 'dstestproject',
+        'author_name': 'dstestproject',
+        'open_source_license': 'MIT'
+       }
 
 
 def system_check(basename):
@@ -23,7 +22,7 @@ def system_check(basename):
 
 @pytest.fixture(scope='class', params=[{}, args])
 def default_baked_project(tmpdir_factory, request):
-    temp = tmpdir_factory.mktemp('data-project')
+    temp = tmpdir_factory.mktemp('dstestproject')
     out_dir = Path(temp).resolve()
 
     pytest.param = request.param
