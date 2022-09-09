@@ -15,6 +15,7 @@ pylint = "^2.15.0"
 flake8 = "^5.0.4"
 bandit = "^1.7.4"
 setuptools = "^65.3.0"
+nox-poetry = "^1.0.1"
 
 [tool.poetry.dev-dependencies]
 nox = "^2022.8.7"
