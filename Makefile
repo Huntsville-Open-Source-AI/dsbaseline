@@ -17,13 +17,17 @@ PROJECT_NAME = {{ cookiecutter.repo_name }}
 clean:
 	find . -type f -name "*.py[co]" -delete
 	find . -type d -name "__pycache__" -delete
+	find . -depth -type d -name ".mypy_cache" -exec rm -rf {} \;
+	find . -depth -type d -name ".nox" -exec rm -rf {} \;
+	find . -depth -type d -name ".pytest_cache" -exec rm -rf {} \;
+	find . -depth -type d -name ".pytype" -exec rm -rf {} \;
 
 ## Install Python Dependencies
 requirements: test_template
 	python3 -m pip install -r requirements.txt
 
 ## Test python environment is setup correctly
-test_template:
+test_template: clean
 	pytest tests
 
 # Test mkdocs for the dsbaseline GitHub pages
